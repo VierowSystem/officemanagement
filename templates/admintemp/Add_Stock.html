@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Connect Plus</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/select2/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css' %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
+  </head>
+  <body>
+  <a href="{% url 'admindash' %}" >Back</a>
+    <div class="container-scroller">
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title" align="center"><u>ADD STOCK</u></h4>
+                    <p class="card-description"> Horizontal form layout </p>
+                    <form class="forms-sample" method="POST">{% csrf_token %}
+                      <div class="form-group row">
+                        <label for="exampleInputUsername1" class="col-sm-3 col-form-label">Stock_Name</label>
+                        <div class="col-sm-9">
+                         <input type="text" class="form-control" id="exampleInputUsername1" name="stock_name" placeholder="stock_name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputplace" class="col-sm-3 col-form-label">Place</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="exampleInputplace" name="place" placeholder="place">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputstockno" class="col-sm-3 col-form-label">Stock_No</label>
+                        <div class="col-sm-9">
+                           <input type="text" class="form-control" id="exampleInputstockno" name="stock_no" placeholder="stock_no">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputmodel" class="col-sm-3 col-form-label">Model</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputmodel" name="model" placeholder="model">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+<!--                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Re Password</label>-->
+<!--                        <div class="col-sm-9">-->
+<!--                          <input type="password" class="form-control" id="exampleInputConfirmPassword2" placeholder="Password">-->
+<!--                        </div>-->
+                      </div>
+                      <div class="form-check form-check-flat form-check-primary">
+                        <label class="form-check-label">
+<!--                          <input type="checkbox" class="form-check-input"> Remember me </label>-->
+                        </label>
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+        {% endblock %}
+
+

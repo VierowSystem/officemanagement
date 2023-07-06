@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>VMS</title>
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'profile/css/main.css' %}" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">PROFILE</h2>
+                    {% for user in profile %}
+
+                    <form method="POST">{% csrf_token %}
+                        <div class="input-group">Name : {{user.name}}
+<!--                            <input class="input&#45;&#45;style-3" type="" placeholder="" name="name">-->
+                        </div>
+                        <div class="input-group">Contact_No : {{user.contact_no}}
+<!--                            <input class="input&#45;&#45;style-3 js-datepicker" type="text" placeholder="Contact_No" name="contact_no">-->
+                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                        </div>
+                        <div class="input-group">
+<!--                            <div class="rs-select2 js-select-simple select&#45;&#45;no-search">Address : {{user.address}}-->
+<!--                                <input class="input&#45;&#45;style-3 js-datepicker" type="text" placeholder="Address" name="address">-->
+<!--                                <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>-->
+<!--                                <select name="gender">-->
+<!--                                    <option disabled="disabled" selected="selected">Gender</option>-->
+<!--                                    <option>Male</option>-->
+<!--                                    <option>Female</option>-->
+<!--                                    <option>Other</option>-->
+<!--                                </select>-->
+<!--                                <div class="select-dropdown"></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="input-group">Child_Name : {{user.child_name}}-->
+<!--&lt;!&ndash;                            <input class="input&#45;&#45;style-3" type="email" placeholder="Child_Name" name="child_name">&ndash;&gt;-->
+<!--                        </div>-->
+<!--                        <div class="input-group"> Child_Gender : {{user.child_gender}}-->
+<!--&lt;!&ndash;                            <input class="input&#45;&#45;style-3" type="text" placeholder="Child_Gender" name="child_gender">&ndash;&gt;-->
+<!--                        </div>-->
+<!--                        <div class="input-group">Child_Age  :  {{user.child_age}}-->
+<!--                            <input class="input&#45;&#45;style-3" type="text" placeholder="Child_Age" name="child_age">-->
+                        </div>
+                        <a href="">UPDATE</a>
+
+
+                    </form>
+                </div>
+                {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Jquery JS-->
+    <script src="{% static 'profile/vendor/jquery/jquery.min.js' %}"></script>
+    <!-- Vendor JS-->
+    <script src="{% static 'profile/vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'profile/vendor/datepicker/moment.min.js' %}"></script>
+    <script src="{% static 'profile/vendor/datepicker/daterangepicker.js' %}"></script>
+
+    <!-- Main JS-->
+    <script src="{% static 'profile/js/global.js' %}"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->

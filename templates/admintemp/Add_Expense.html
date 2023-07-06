@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+<html lang="en">
+  <head>
+    <script>
+        function calculateTotal() {
+            // Get the input values
+            var travel_exp = parseFloat(document.getElementById('travelInput').value) || 0;
+            var food = parseFloat(document.getElementById('foodInput').value) || 0;
+            var tea = parseFloat(document.getElementById('teaInput').value) || 0;
+            var other = parseFloat(document.getElementById('otherInput').value) || 0;
+
+
+            // Calculate the total
+            var total = travel_exp + food + tea + other;
+
+            // Display the total
+            document.getElementById('totalInput').value = total;
+        }
+    </script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Connect Plus</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/select2/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css' %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
+  </head>
+  <body>
+    <a href="{% url 'admindash' %}" >Back</a>
+    <div class="container-scroller">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title" align="center"><u>ADD EXPENSE</u></h4>
+            <p class="card-description"> Horizontal form layout </p>
+            <form class="forms-sample" method="POST">{% csrf_token %}
+              <div class="form-group row">
+                <label for="exampleInputUsername1" class="col-sm-3 col-form-label">Date</label>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control" id="exampleInputUsername1" name="date" placeholder="date">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="exampleInputsite" class="col-sm-3 col-form-label">Site</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="exampleInputsite" name="site" placeholder="site">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="exampleInputempname" class="col-sm-3 col-form-label">Employee_Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="exampleInputempname" name="emp_name" placeholder="emp_name">
+                </div>
+              </div>
+                <div class="form-group row">
+                <label for="travelInput" class="col-sm-3 col-form-label">Travel_Expense</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="travelInput" name="travel_exp" placeholder="travel_exp">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="foodInput" class="col-sm-3 col-form-label">Foods</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="foodInput" name="food" placeholder="food">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="teaInput" class="col-sm-3 col-form-label">Tea</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="teaInput" name="tea" placeholder="tea">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="otherInput" class="col-sm-3 col-form-label">Other</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="otherInput" name="other" placeholder="other">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="totalInput" class="col-sm-3 col-form-label">Total</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="totalInput" name="total" placeholder="total">
+                </div>
+              </div>
+              <div class="form-check form-check-flat form-check-primary">
+                <label class="form-check-label">
+                </label>
+              </div>
+              <button type="button" class="btn btn-primary mr-2" onclick="calculateTotal()">Calculate Total</button>
+              <button type="submit" class="btn btn-primary mr-2">Submit</button>
+              <button class="btn btn-light">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock %}
+
+
+

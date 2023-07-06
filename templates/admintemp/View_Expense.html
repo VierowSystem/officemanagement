@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Connect Plus</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
+  </head>
+  <body>
+  <a href="{% url 'admindash' %}" >Back</a>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+              <div class="col-lg-12 stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                       <h1 align="center"><u><i>EXPENSE DETAILS</i></u></h1>
+                    <h4 class="card-title">Table with contextual classes</h4>
+<!--                    <p class="card-description"> Add class <code>.table-{color}</code>-->
+<!--                    </p>-->
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th> SI_NO </th>
+                            <th> Date </th>
+                            <th> Site </th>
+                            <th> Employee_Name </th>
+                            <th> Travel_Expense </th>
+                            <th> Food </th>
+                            <th> Tea </th>
+                            <th> Other </th>
+                            <th> Total </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in exp %}
+                        <tr class="table-info">
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.site}}</td>
+                            <td>{{i.emp_name}}</td>
+                            <td>{{i.travel_exp}}</td>
+                            <td>{{i.food}}</td>
+                            <td>{{i.tea}}</td>
+                            <td>{{i.other}}</td>
+                             <td data-total="{{ i.total }}">{{ i.total }}</td>
+                            <td><a href="{% url 'update_expense' i.id %}">
+                                <button type="submit" class="btn btn-primary">UPDATE</button></a>
+                            </td>
+                            <td>
+                                <form action="{% url 'expense_delete' i.id %}" method='POST'
+                                      style="display:inline;" onsubmit=" ">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="group" value="{{ i.id }}">
+                                    <button type="submit" class="btn btn-dark" >DELETE</button>
+                                </form>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="8">TOTAL</td>
+                            <td id="totalSum"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                      <script>
+
+                      window.addEventListener('DOMContentLoaded', () => {
+                   // Get all the total values in the table
+             const totalElements = document.querySelectorAll('td[data-total]');
+
+                  // Calculate the sum of all total values
+                   let totalSum = 0;
+                 totalElements.forEach((element) => {
+            const total = parseFloat(element.dataset.total) || 0;
+              totalSum += total;
+     });
+
+     // Set the calculated total sum in the totalSum td element
+     const totalSumElement = document.getElementById('totalSum');
+     totalSumElement.textContent = totalSum;
+   });
+</script>
+                      <a class="btn btn-primary m-2" href="{% url 'pdfexpense' %}">Create PDF</a>
+
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{% static 'admin/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'admin/js/off-canvas.js' %}"></script>
+    <script src="{% static 'admin/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'admin/js/misc.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+  </body>
+</html>

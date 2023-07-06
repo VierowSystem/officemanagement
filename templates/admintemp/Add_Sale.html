@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Connect Plus</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/select2/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css' %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
+  </head>
+  <body>
+  <a href="{% url 'admindash' %}" >Back</a>
+    <div class="container-scroller">
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title" align="center"><u>ADD SALES DETAILS</u></h4>
+                    <p class="card-description"> Horizontal form layout </p>
+                    <form class="forms-sample" method="POST">{% csrf_token %}
+                      <div class="form-group row">
+                        <label for="exampleInputUsername1" class="col-sm-3 col-form-label"><b>Date</b></label>
+                        <div class="col-sm-9">
+                         <input type="date" class="form-control" id="exampleInputUsername1" name="date" placeholder="dateof_purchase">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputplace" class="col-sm-3 col-form-label"><b>Name</b></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="exampleInputplace" name="name" placeholder="name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputstockno" class="col-sm-3 col-form-label"><b>Invoice_Number</b></label>
+                        <div class="col-sm-9">
+                           <input type="text" class="form-control" id="exampleInputstockno" name="invoice_no" placeholder="invoice_no">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputgst" class="col-sm-3 col-form-label"><b>GST_Number</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputgst" name="gst_no" placeholder="gst_no">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputsale" class="col-sm-3 col-form-label"><b>Total</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputsale" name="total" placeholder="total">
+                        </div>
+                      </div>
+                         <div class="form-group row">
+                           <label for="exampleInputfreight" class="col-sm-3 col-form-label"><b>Discount_Allowed</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputfreight" name="discount_allowed" placeholder="discount_allowed">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                          <label for="exampleInputtax" class="col-sm-3 col-form-label"><b>Sub_Total</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputtax" name="sub_total" placeholder="sub_total">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                          <label for="exampleInputsgst" class="col-sm-3 col-form-label"><b>SGST</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputsgst" name="sgst" placeholder="sgst">
+                        </div>
+                      </div>
+                         <div class="form-group row">
+                           <label for="exampleInputcgst" class="col-sm-3 col-form-label"><b>CGST</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputcgst" name="cgst" placeholder="cgst">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                            <label for="exampleInputcost" class="col-sm-3 col-form-label"><b>Grand_Total</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputcost" name="grand_total" placeholder="grand_total">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                            <label for="exampleInputigst" class="col-sm-3 col-form-label"><b>Pay_Date</b></label>
+                        <div class="col-sm-9">
+                          <input type="date" class="form-control" id="exampleInputigst" name="pay_date" placeholder="pay_date">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                            <label for="exampleInputamt" class="col-sm-3 col-form-label"><b>Amount Recieved</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputamt" name="amt_recieved" placeholder="amt_recieved">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                            <label for="exampleInputsite" class="col-sm-3 col-form-label"><b>Outstanding</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputsite" name="outstanding" placeholder="outstanding">
+                        </div>
+                      </div>
+                          <div class="form-group row">
+                            <label for="exampleInputdop" class="col-sm-3 col-form-label"><b>Mode_Of_Payment</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputdop" name="mode_of_payment" placeholder="mode_of_payment">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                            <label for="exampleInputpm" class="col-sm-3 col-form-label"><b>Payment_Status</b></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputpm" name="payment_status" placeholder="payment_status">
+                        </div>
+                      </div>
+<!--                        <div class="form-group row">-->
+<!--                            <label for="exampleInputamt2" class="col-sm-3 col-form-label"><b>Amount</b></label>-->
+<!--                        <div class="col-sm-9">-->
+<!--                          <input type="text" class="form-control" id="exampleInputamt2" name="amount2" placeholder="amount2">-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                        <div class="form-group row">-->
+<!--                            <label for="exampleInputbal" class="col-sm-3 col-form-label"><b>Balance</b></label>-->
+<!--                        <div class="col-sm-9">-->
+<!--                          <input type="text" class="form-control" id="exampleInputbal" name="balance" placeholder="balance">-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                        <div class="form-group row">-->
+<!--                            <label for="exampleInputpb" class="col-sm-3 col-form-label"><b>Paid_By</b></label>-->
+<!--                        <div class="col-sm-9">-->
+<!--                          <input type="text" class="form-control" id="exampleInputpb" name="paid_by" placeholder="paid_by">-->
+<!--                        </div>-->
+<!--                      </div>-->
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+        {% endblock %}
+    </div>
+
+
+
+
+
+

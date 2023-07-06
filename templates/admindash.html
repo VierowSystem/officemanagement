@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vierow System</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/font-awesome/css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css' %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href=""><img src="{% static 'admin/images/vierowlogo.jpg' %}" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href=""><img src="{% static 'admin/images/logo-mini.svg' %}" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <div class="search-field d-none d-xl-block">
+            <form class="d-flex align-items-center h-100" action="#">
+              <div class="input-group">
+                <div class="input-group-prepend bg-transparent">
+                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                </div>
+                <input type="text" class="form-control bg-transparent border-0"  placeholder="Search products">
+              </div>
+            </form>
+          </div>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+<!--            <li class="nav-item nav-category">Main</li>-->
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                <span class="menu-title">Dashboard</span>
+              </a>
+            </li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">STOCKS</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'Add_Stock' %}">Add Stock</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'View_Stock' %}">View Stock</a></li>
+                </ul>
+              </div>
+            </li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">ACCOUNTS</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="ui-basic1">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'Add_Account' %}">Add Purchase Details</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'View_Account' %}">View Purchase Details</a></li>
+                </ul>
+              </div>
+            </li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">SALES</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="ui-basic2">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'Add_Sale' %}">Add Sales</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'View_Sale' %}">View Sales</a></li>
+                </ul>
+              </div>
+            </li>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">EXPENSE</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="ui-basic3">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'Add_Expense' %}">Add Expenses</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'View_Expense' %}">View Expenses</a></li>
+                </ul>
+              </div>
+            </li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">EMPLOYEE</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="ui-basic4">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'view_emp' %}">View Employees</a></li>
+                </ul>
+              </div>
+            </li>
+<!--                <i class="menu-arrow"></i>-->
+<!--              </a>-->
+<!--               <div class="collapse" id="auth">-->
+<!--                <ul class="nav flex-column sub-menu">-->
+<!--                  <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>-->
+<!--                  <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>-->
+<!--                </ul>-->
+<!--               </div>-->
+<!--             </li>-->
+              </a>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="nav-item sidebar-user-actions">
+              <div class="sidebar-user-menu">
+                <a href="{% url 'homepage' %}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
+                  <span class="menu-title">Log Out</span></a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row" id="proBanner">
+              <div class="col-12">
+              </div>
+            </div>
+            <div class="d-xl-flex justify-content-between align-items-start">
+              <h2 class="text-dark font-weight-bold mb-2">ADMIN DASHBOARD </h2>
+              <div class="d-sm-flex justify-content-xl-between align-items-center mb-2">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
+                  <div class="d-md-block d-none">
+                  </div>
+                </div>
+                <div class="tab-content tab-transparent-content">
+                  <div class="tab-pane fade show active" id="business-1" role="tabpanel" aria-labelledby="business-tab">
+                    <div class="row">
+                      <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+                      </div>
+                        </div>
+                      </div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 grid-margin">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+<!--                                  <h4 class="card-title mb-0">Recent Activity</h4>-->
+                                  <div class="dropdown dropdown-arrow-none">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-3 col-sm-4 grid-margin  grid-margin-lg-0">
+                                <div class="wrapper pb-5 border-bottom">
+
+                                  <canvas id="total-profit"></canvas>
+                                </div>
+<!--                                <div class="wrapper pt-5">-->
+<!--                                  <div class="text-wrapper d-flex align-items-center justify-content-between mb-2">-->
+
+                                  <canvas id="total-expences"></canvas>
+                                </div>
+                              </div>
+                              <div class="col-lg-9 col-sm-8 grid-margin  grid-margin-lg-0">
+                                <div class="pl-0 pl-lg-4 ">
+                                  <div class="d-xl-flex justify-content-between align-items-center mb-2">
+                                    <div class="d-lg-flex align-items-center mb-lg-2 mb-xl-0">
+
+                                    </div>
+                                    <div class="d-lg-flex">
+                                    </div>
+                                  </div>
+                                  <div class="graph-custom-legend clearfix" id="device-sales-legend"></div>
+                                  <canvas id="device-sales"></canvas>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                      <div class="col-sm-4 grid-margin stretch-card">-->
+<!--                        <div class="card card">-->
+
+<!--                          </div>-->
+<!--                          <div class="card-body bg-white pt-4">-->
+<!--                            <div class="row pt-4">-->
+<!--                              <div class="col-sm-6">-->
+<!--                                <div class="text-center border-right border-md-0">-->
+
+<!--                                  <h4>Conversion</h4>-->
+<!--                                  <h1 class="text-dark font-weight-bold mb-md-3">$306</h1>-->
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="text-center">
+<!--                                  <h4>Cancellation</h4>-->
+<!--                                  <h1 class="text-dark font-weight-bold">$1,520</h1>-->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-8  grid-margin stretch-card">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="d-xl-flex justify-content-between mb-2">
+<!--                              <h4 class="card-title">Page views analytics</h4>-->
+                              <div class="graph-custom-legend primary-dot" id="pageViewAnalyticLengend"></div>
+                            </div>
+                            <canvas id="page-view-analytic"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="footer-inner-wraper">
+              <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
+              </div>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{% static 'admin/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{% static 'admin/vendors/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'admin/vendors/jquery-circle-progress/js/circle-progress.min.js' %}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'admin/js/off-canvas.js' %}"></script>
+    <script src="{% static 'admin/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'admin/js/misc.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{% static 'admin/js/dashboard.js' %}"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
