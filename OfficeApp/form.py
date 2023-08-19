@@ -5,7 +5,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
 
-from OfficeApp.models import Login, User, Stock, Account, Sales, Expense
+from OfficeApp.models import Login, User, Stock, Account, Sales, Expense, Item
 
 
 def phone_number_validator(value):
@@ -21,12 +21,10 @@ class LoginRegister(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = Login
-        fields = ('username', 'password1','password2')
+        fields = ('username', 'password1', 'password2')
 
 
-class Userform(forms.ModelForm):
-    contact_no = forms.CharField(label='CONTACT_NO', validators=[phone_number_validator])
-
+class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('name', 'contact_no')
@@ -41,14 +39,14 @@ class Userform(forms.ModelForm):
 class Stockform(forms.ModelForm):
     class Meta:
         model = Stock
-        fields = ('stock_name', 'place', 'stock_no', 'model')
+        fields = ('date', 'name', 'invoice_no', 'particular', 'model', 'unit_price', 'qty', 'units', 'site', 'usage_qty','balance')
 
 
 class Accountform(forms.ModelForm):
     class Meta:
         model = Account
-        fields = ( 'dateof_purchase', 'vendor', 'invoice_num', 'gst_num', 'sale_amt', 'freight_charge', 'taxable_value', 'sgst',
-                  'cgst', 'round_off', 'igst', 'amount1', 'site', 'dateof_payment', 'payment_mode', 'amount2', 'balance', 'paid_by')
+        fields = ('dateof_purchase', 'vendor','particular','model','gst_num', 'sale_amt','qty','freight_charge', 'taxable_value', 'sgst',
+                  'cgst', 'round_off', 'igst', 'amount1', 'site', 'dateof_payment', 'payment_mode', 'amount2', 'balance', 'paid_by','invoice_num',)
 
         def clean_dateof_purchase(self):
             dateof_purchase = self.cleaned_data['dateof_purchase']
@@ -66,7 +64,7 @@ class Accountform(forms.ModelForm):
 class Salesform(forms.ModelForm):
     class Meta:
         model = Sales
-        fields = ('date', 'name', 'invoice_no', 'gst_no', 'total', 'discount_allowed', 'sub_total', 'cgst', 'sgst','grand_total',
+        fields = ('date', 'name', 'particular','quantity_sold', 'invoice_no', 'gst_no', 'total', 'discount_allowed', 'sub_total', 'cgst', 'sgst','grand_total',
                    'pay_date', 'amt_recieved', 'outstanding', 'mode_of_payment', 'payment_status')
 
 
@@ -75,8 +73,24 @@ class Expenseform(forms.ModelForm):
         model = Expense
         fields = ('date', 'site', 'emp_name', 'travel_exp', 'food', 'tea', 'other', 'total')
 
-#
-# class EmployeForm(forms.ModelForm):
-#     class Meta:
-#         model = Empexpense
-#         fields = ( 'employee_name','date', 'site', 'travel_exp', 'food', 'tea', 'other')
+class Itemform(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = ('date', 'item_name', 'number', 'description', 'brand', 'is_approved', 'is_rejected')
+
+
+class ManagerRegistrationForm(forms.Form):
+    # Your form fields and validation methods here (same as in your original code)
+
+    def save(self):
+        username = self.cleaned_data.get('username')
+        email = self.cleaned_data.get('email')
+        password = self.cleaned_data.get('password1')
+
+        # Create the manager using the custom Login model
+        user = Login.objects.create_user(username=username, email=email, password=password)
+        user.is_manager = True
+        user.save()  # Save the user object with is_manager set to True
+
+        return user
+

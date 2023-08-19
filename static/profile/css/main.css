@@ -496,7 +496,7 @@ input {
 }
 
 .card-3 .card-heading {
-  background: url("../images/mom1.jpg") top left/cover no-repeat;
+  background: url("") top left/cover no-repeat;
   display: table-cell;
   width: 50%;
 }

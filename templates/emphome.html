@@ -41,7 +41,7 @@
 <!--                  <span  style="font-size:33px;cursor:pointer; color: #ffffff;" onclick="openNav()"><img src="{% static 'employe/images/toggle-menu.png' %}" class="toggle_menu"></span>-->
                </div>
                <div class="col-sm-6 col-lg-2">
-                  <div class="logo"><a href="index.html"><img src="{% static 'employe/images/vierowlogo.jpg' %}"></a></div>
+                  <div class="logo"><a href="{% url 'emphome' %}"><img src="{% static 'employe/images/vierowlogo.jpg' %}"></a></div>
                </div>
                <div class="col-sm-8">
                   <div class="menu_text">
@@ -50,6 +50,8 @@
                         <li><a href="{% url 'emp_pro' %}">Profile</a></li>
 <!--                        <li><a href="">Add Expense</a></li>-->
                         <li><a href="{% url 'empView_Expense' %}">View Expence</a></li>
+                        <li><a href="{% url 'itemadd' %}">Add Items</a></li>
+                        <li><a href="{% url 'empitem_view' %}">View Items</a></li>
                         <li><a href="{% url 'homepage' %}">Logout</a></li>
 <!--                        <li><a href="#"><img src="{% static 'employe/images/search-icon.png' %}"></a></li>-->
 <!--                        <li><a href="#"><img src="{% static 'employe/images/user-icon.png' %}"></a></li>-->
@@ -82,7 +84,7 @@
                            </div>
                         </div>
                         <div class="col-md-6 ram">
-                           <div class="right_img"><img src="{% static 'employe/images/img-1.png' %}"></div>
+                           <div class="right_img"><img src="{% static 'employe/images/img.png' %}"></div>
                         </div>
                      </div>
                   </div>
@@ -99,7 +101,7 @@
                            </div>
                         </div>
                         <div class="col-md-6 ram">
-                           <div class="right_img"><img src="{% static 'employe/images/img-1.png' %}"></div>
+                           <div class="right_img"><img src="{% static 'employe/images/img_1.jpg' %}"></div>
                         </div>
                      </div>
                   </div>

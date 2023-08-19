@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Connect Plus</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'admin/vendors/select2/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css' %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
+  </head>
+  <body>
+  <a href="{% url 'emphome' %}" >Back</a>
+    <div class="container-scroller">
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title" align="center"><u>ADD ITEMS</u></h4>
+                    <p class="card-description"> Horizontal form layout </p>
+                      {% for message in messages %}
+                      <div class="alert alert-info" role="alert">
+                          <strong>{{message}}</strong>
+                      </div>
+                      {% endfor %}
+                   <form class="forms-sample" method="POST">{% csrf_token %}
+<!--                       <div class="form-group row">-->
+<!--                            <label for="exampleInputemp_name" class="col-sm-3 col-form-label">Employee_Name</label>-->
+<!--                            <div class="col-sm-9">-->
+<!--                                <input type="hidden" id="exampleInputemp_name" name="employee_name" value="{{ request.user.username }}">-->
+<!--                            </div>-->
+<!--                        </div>-->
+                     <div class="form-group row">
+                         <label for="exampleInputdate" class="col-sm-3 col-form-label">Date</label>
+                         <div class="col-sm-9">
+                             <input type="date" class="form-control" id="exampleInputdate" name="date" placeholder="date" required>
+                             {% if form.errors.date %}
+                             <div class="text-danger">
+                                 {{ form.errors.date }}</div>
+                             {% endif %}
+                         </div>
+                     </div>
+                      <div class="form-group row">
+                        <label for="item_name" class="col-sm-3 col-form-label">Item_Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="item_name" name="item_name" placeholder="item_name">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                            <label for="number" class="col-sm-3 col-form-label">Numbers</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="number" name="number" placeholder="number">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="description" class="col-sm-3 col-form-label">Description</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="description" name="description" placeholder="description">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="brand" class="col-sm-3 col-form-label">Brand</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="brand" name="brand" placeholder="brand">
+                            </div>
+                        </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+        {% endblock %}
+
+

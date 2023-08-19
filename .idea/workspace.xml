@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="97c79c4e-ba2e-499d-9b72-eda420da867a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OfficeApp/manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OfficeApp/signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OfficeApp/validators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OfficePro/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/admin/images/PIC1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/admin/images/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/admin/images/table1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/employe/images/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/employe/images/img1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/employe/images/img_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/employe/images/office1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/profile/images/vierowlogo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admintemp/adminitemview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admintemp/managerview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admintemp/reg_manager.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/emptemp/empitemview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/emptemp/itemadd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/emptemp/profile_update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/forgot_password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/manager/item_view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/manager/mview_accounts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/manager/mview_emp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/manager/mview_exp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/manager/mview_sale.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/manager/mview_stock.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/managerhome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/reset_password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/OfficePro/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OfficePro/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OfficePro/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OfficePro/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OfficePro/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/office.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OfficePro/.idea/office.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficeApp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/OfficeApp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficeApp/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/OfficeApp/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficeApp/filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/OfficeApp/filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficeApp/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/OfficeApp/form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficeApp/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/OfficeApp/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficeApp/migrations/0002_delete_empexpense.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficeApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/OfficeApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficeApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/OfficeApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficeApp/userview.py" beforeDir="false" afterPath="$PROJECT_DIR$/OfficeApp/userview.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficeApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/OfficeApp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OfficePro/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/OfficePro/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appnew.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/photos/cashew.webp" beforeDir="false" afterPath="$PROJECT_DIR$/OfficePro/media/photos/cashew.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/employe/images/img-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/employe/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/profile/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/profile/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admindash.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admindash.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/Add_Account.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/Add_Account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/Add_Expense.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/Add_Expense.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/Add_Sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/Add_Sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/Add_Stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/Add_Stock.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/View_Account.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/View_Account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/View_Expense.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/View_Expense.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/View_Sale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/View_Sale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/View_Stock.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/View_Stock.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/pdfaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/pdfaccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/pdfexpense.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/pdfexpense.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/pdfsale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/pdfsale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/pdfstock.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/pdfstock.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admintemp/view_emp.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admintemp/view_emp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/emphome.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emphome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/emptemp/empAdd_Expense.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emptemp/empAdd_Expense.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/emptemp/empView_Expense.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emptemp/empView_Expense.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/emptemp/emp_pro.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emptemp/emp_pro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../office\exportToHTML" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/requirements.txt" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2RSoREK4lnnyaVXjlS8jmwCnHH8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/User/PycharmProjects/pythonpro1",
+    "settings.editor.selected.configurable": "vcs.Git"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\PycharmProjects\office\static\admin\images" />
+      <recent name="C:\Users\User\PycharmProjects\office\static\employe\images" />
+      <recent name="C:\Users\User\PycharmProjects\office\static\profile\images" />
+      <recent name="C:\Users\User\PycharmProjects" />
+      <recent name="C:\Users\User\PycharmProjects\office\static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\PycharmProjects\office\static\admin\images" />
+      <recent name="C:\Users\User\PycharmProjects\office\templates\emptemp" />
+      <recent name="C:\Users\User\PycharmProjects\office\templates\admintemp" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.appnew">
+    <configuration name="appnew" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="office" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/appnew.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="office" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="office" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OfficeApp" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OfficeApp/views.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.appnew" />
+        <item itemvalue="Python.views" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97c79c4e-ba2e-499d-9b72-eda420da867a" name="Changes" comment="" />
+      <created>1687252832489</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687252832489</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

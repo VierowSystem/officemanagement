@@ -3,25 +3,33 @@ from io import BytesIO
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.forms import forms
 from django.http import HttpResponse
-
 from django.shortcuts import render, redirect
 from django.template.loader import get_template
-from django.urls import reverse
-import PyPDF2
 from bs4 import BeautifulSoup
 
-
-from OfficeApp.form import Stockform, LoginRegister, Userform, Accountform, Salesform, Expenseform
-from OfficeApp.models import Stock, Account, Sales, User, Expense
+from OfficeApp.filter import StockFilter, SalesFilter
+from OfficeApp.form import Stockform, LoginRegister, UserForm, Accountform, Salesform, Expenseform, \
+    ManagerRegistrationForm
+from OfficeApp.models import Stock, Account, Sales, User, Expense, Item, Login
 from xhtml2pdf import pisa
 
-
+@login_required
 def main_home(request):
     return render(request,'homepage.html')
 
 
+def stock_view(request):
+    stock = Stock.objects.all()
+    stockFilter = StockFilter(request.GET, queryset=stock)
+    stock = stockFilter.qs
+    context = {
+        'stock': stock,
+        'stockFilter': stockFilter,
+    }
+    return render(request, 'admintemp/View_Stock.html',context)
+
+@login_required
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('uname')
@@ -34,36 +42,46 @@ def login_view(request):
                 return redirect('admindash')
             if user.is_user:
                 return redirect('emphome')
+            if user.is_manager:
+                return redirect('managerhome')
         else:
             messages.info(request, "Invalid Credentials")
     return render(request, 'login.html')
 
 
-
+@login_required
 def admin_home(request):
-        return render(request,'admindash.html')
+    managers = Login.objects.filter(is_manager=True)
+    return render(request, 'admindash.html', {'managers': managers})
 
 # ************     STOCKS       ******************            *******************            *****************
-
-def stock_add(request):
+@login_required
+def Stock_add(request):
     form = Stockform()
     if request.method == 'POST':
-        print('ssssss')
         form = Stockform(request.POST)
-        print('ttttttt')
         if form.is_valid():
-            print('ooooo')
             form.save()
-            messages.info(request, "Stock Added Successfully")
+            messages.info(request, "Stocks Added Successfully")
             return redirect('View_Stock')
+        else:
+            print(form.errors)
     return render(request, 'admintemp/Add_Stock.html', {'form': form})
 
-
+@login_required
 def stock_view(request):
     stock = Stock.objects.all()
-    return render(request, 'admintemp/View_Stock.html', {'stock': stock})
+    stockFilter = StockFilter(request.GET, queryset=stock)
+    stock = stockFilter.qs
+    context = {
+        'stock': stock,
+        'stockFilter': stockFilter,
+    }
+    return render(request, 'admintemp/View_Stock.html',context)
 
 
+
+@login_required
 def update_stock(request, id):
     n = Stock.objects.get(id=id)
     if request.method == 'POST':
@@ -77,6 +95,7 @@ def update_stock(request, id):
     return render(request, 'admintemp/update_stock.html', {'form': form})
 
 
+@login_required
 def stock_delete(request, id):
     n = Stock.objects.get(id=id)
     if request.method == 'POST':
@@ -86,6 +105,8 @@ def stock_delete(request, id):
     else:
         return redirect('View_Stock')
 
+
+@login_required
 def pdf_stock(request):
     stock = Stock.objects.all()
     if request.method == 'GET':
@@ -110,51 +131,45 @@ def pdf_stock(request):
             return HttpResponse('We had some errors <pre>' + html + '</pre>')
         return response
 
-# ************            ******************            *******************            *****************
-
-# def emp_register(request):
-#     if request.method == 'GET':
-#         print("aaaaaa")
-#         login_form = LoginRegister(request.GET ,prefix='login_form')
-#         emp_form = Userform(request.GET,prefix='emp_form')
-#         print("bbbbb")
-#         if login_form.is_valid() and emp_form.is_valid():
-#             print('ccccc')
-#             u = login_form.save()
-#             u.is_user = True
-#             u.save()
-#             print('ddddddd')
-#             emp_form = emp_form.save()
-#             emp_form.user = u
-#             emp_form.save()
-#             messages.info(request, "User Registered Successfully")
-#             return redirect('login')
-#     else:
-#         login_form = LoginRegister(prefix='form1')
-#         emp_form = Userform(prefix='form2')
-#     return render(request, 'empreg.html', {'login_form': login_form, 'emp_form': emp_form})
-
 
 # ************   ACCOUNTS         ******************            *******************            *****************
 
+@login_required
 def Account_add(request):
     form = Accountform()
     if request.method == 'POST':
         form = Accountform(request.POST)
         if form.is_valid():
-            form.save()
-            messages.info(request, "Accounts Added Successfully")
+            account = form.save()  # Save the Account entry
+
+            # Create a new Stock entry based on the purchased item
+            Stock.objects.create(
+                date=account.dateof_purchase,
+                name=account.vendor,
+                invoice_no=account.invoice_num,
+                particular=account.particular,
+                model=account.model,  # Update this field accordingly
+                unit_price=account.sale_amt,  # Update this field accordingly
+                qty=account.qty,  # Update this field accordingly
+                units='NOS',  # Update this field accordingly
+                site=account.site,
+                usage_qty=0,  # Initialize with 0
+                balance=account.amount1  # Initialize with purchased quantity
+            )
+
+            messages.info(request, "Account Added Successfully")
             return redirect('View_Account')
         else:
             print(form.errors)
     return render(request, 'admintemp/Add_Account.html', {'form': form})
 
-
-
+@login_required
 def account_view(request):
     account = Account.objects.all()
     return render(request, 'admintemp/View_Account.html', {'account': account})
 
+
+@login_required
 def update_account(request, id):
     n = Account.objects.get(id=id)
     if request.method == 'POST':
@@ -168,7 +183,7 @@ def update_account(request, id):
     return render(request, 'admintemp/update_account.html', {'form': form})
 
 
-
+@login_required
 def account_delete(request, id):
     n = Account.objects.get(id=id)
     if request.method == 'POST':
@@ -178,6 +193,7 @@ def account_delete(request, id):
     else:
         return redirect('View_Account')
 
+@login_required
 def pdf_account(request):
     account = Account.objects.all()
     if request.method == 'GET':
@@ -202,7 +218,7 @@ def pdf_account(request):
 
 
 # ************      SALES      ******************            *******************            *****************
-
+@login_required
 def Sales_add(request):
     if request.method == 'POST':
         form = Salesform(request.POST)
@@ -215,34 +231,44 @@ def Sales_add(request):
     return render(request, 'admintemp/Add_Sale.html', {'form': form})
 
 
+@login_required
 def sale_view(request):
     sale = Sales.objects.all()
-    return render(request, 'admintemp/View_Sale.html', {'sale': sale})
+    saleFilter = SalesFilter(request.GET, queryset=sale)
+    sale = saleFilter.qs
+    context = {
+        'sale': sale,
+        'saleFilter': saleFilter,
+    }
+    return render(request, 'admintemp/View_Sale.html',context)
 
 
+@login_required
 def update_sales(request, id):
     n = Sales.objects.get(id=id)
     if request.method == 'POST':
         form = Salesform(request.POST or None, instance=n)
         if form.is_valid():
             form.save()
-            messages.info(request, "Accounts Updated Successfully")
+            messages.info(request, "Sales Updated Successfully")
             return redirect('View_Sale')
     else:
         form = Salesform(request.POST or None, instance=n)
     return render(request, 'admintemp/update_sales.html', {'form': form})
 
 
+@login_required
 def sales_delete(request, id):
     n = Sales.objects.get(id=id)
     if request.method == 'POST':
         n.delete()
-        messages.info(request, "Accounts Deleted Successfully")
+        messages.info(request, "Sales Deleted Successfully")
         return redirect('View_Sale')
     else:
         return redirect('View_Sale')
 
 
+@login_required
 def pdf_sale(request):
     sale = Sales.objects.all()
     if request.method == 'GET':
@@ -267,7 +293,7 @@ def pdf_sale(request):
 
 # ************     EXPENSES       ******************            *******************            *****************
 
-
+@login_required
 def Expense_add(request):
     form = Expenseform()
     if request.method == 'POST':
@@ -280,12 +306,12 @@ def Expense_add(request):
             print(form.errors)
     return render(request, 'admintemp/Add_Expense.html', {'form': form})
 
-
+@login_required
 def expense_view(request):
     exp = Expense.objects.all()
     return render(request, 'admintemp/View_Expense.html', {'exp': exp})
 
-
+@login_required
 def update_expense(request, id):
     n = Expense.objects.get(id=id)
     if request.method == 'POST':
@@ -298,7 +324,7 @@ def update_expense(request, id):
         form = Expenseform(request.POST or None, instance=n)
     return render(request, 'admintemp/update_expense.html', {'form': form})
 
-
+@login_required
 def expense_delete(request, id):
     n = Expense.objects.get(id=id)
     if request.method == 'POST':
@@ -308,7 +334,7 @@ def expense_delete(request, id):
     else:
         return redirect('View_Expense')
 
-
+@login_required
 def pdf_expense(request):
     exp = Expense.objects.all()
 
@@ -337,18 +363,19 @@ def pdf_expense(request):
         response.write(pdf_content)
 
         return response
-# ************     USER       ******************            *******************            *****************
 
+# ************     USER       ******************            *******************            *****************
 
 def emp_register(request):
     if request.method == 'POST':
         login_form = LoginRegister(request.POST)
-        user_form = Userform(request.POST)
+        user_form = UserForm(request.POST)
 
         if login_form.is_valid() and user_form.is_valid():
             user = login_form.save(commit=False)
             user.is_user = True
             user.save()
+
 
             user_profile = user_form.save(commit=False)
             user_profile.user = user
@@ -357,9 +384,13 @@ def emp_register(request):
             # Clear form errors
             login_form.errors.clear()
             user_form.errors.clear()
+
+            messages.success(request, "Registration successful. You can now log in.")
+            return redirect('login')  # Redirect to the login page
+
     else:
         login_form = LoginRegister()
-        user_form = Userform()
+        user_form = UserForm()
 
     return render(request, 'empreg.html', {'login_form': login_form, 'user_form': user_form})
 
@@ -369,6 +400,21 @@ def employee(request):
     user = User.objects.all()
     return render(request, 'admintemp/view_emp.html', {'user': user})
 
+@login_required 
+def update_reg(request, id):
+    n = User.objects.get(id=id)
+    if request.method == 'POST':
+        form = Expenseform(request.POST or None, instance=n)
+        if form.is_valid():
+            form.save()
+            messages.info(request, "Expense Updated Successfully")
+            return redirect('View_Expense')
+    else:
+        form = Expenseform(request.POST or None, instance=n)
+    return render(request, 'admintemp/update_expense.html', {'form': form})
+
+
+@login_required
 def emp_delete(request, id):
     n = User.objects.get(id=id)
     if request.method == 'POST':
@@ -376,7 +422,42 @@ def emp_delete(request, id):
         messages.info(request, "User Deleted Successfully")
         return redirect('view_emp')
     else:
+
         return redirect('view_emp')
+
+
+def adminitem_view(request):
+    items = Item.objects.all()
+    return render(request, 'admintemp/adminitemview.html', {'items': items})
+
+# ************     MANAGER       ******************            *******************            *****************
+
+
+
+def register_manager(request):
+    if request.method == 'POST':
+        form = LoginRegister(request.POST)
+        user_form = UserForm(request.POST)
+        if form.is_valid() and user_form.is_valid():
+            user = form.save(commit=False)
+            user.is_manager = True
+            user.save()
+
+            user_data = user_form.save(commit=False)
+            user_data.user = user
+            user_data.save()
+
+            # Additional processing or redirection after successful registration
+            return redirect('admindash')  # Replace 'admindash' with the appropriate URL name
+    else:
+        form = LoginRegister()
+        user_form = UserForm()
+    return render(request, 'admintemp/reg_manager.html', {'form': form, 'user_form': user_form})
+
+
+def manager_view(request):
+    managers = Login.objects.filter(is_manager=True)
+    return render(request, 'admintemp/managerview.html', {'managers': managers})
 
 
 

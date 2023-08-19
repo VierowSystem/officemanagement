@@ -5,6 +5,20 @@
 {% block content %}
 <html lang="en">
   <head>
+    <script>
+        function calculateTotal() {
+            // Get the input values
+            var Sub_Total = parseFloat(document.getElementById('subInput').value) || 0;
+            var sgst = parseFloat(document.getElementById('sgstInput').value) || 0;
+            var cgst = parseFloat(document.getElementById('cgstInput').value) || 0;
+
+            // Calculate the total
+            var total = Sub_Total + sgst + cgst ;
+
+            // Display the total
+            document.getElementById('totalInput').value = total;
+        }
+    </script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,14 +39,19 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
   </head>
-  <body>
+  <body  style="background-image: url('{% static 'admin/images/img.png' %}');">
   <a href="{% url 'admindash' %}" >Back</a>
     <div class="container-scroller">
               <div class="col-md-6 grid-margin stretch-card">
-                <div class="card">
+                <div class="card" style="background-image: url('{% static 'admin/images/table1.jpg' %}');">
                   <div class="card-body">
                     <h4 class="card-title" align="center"><u>ADD SALES DETAILS</u></h4>
                     <p class="card-description"> Horizontal form layout </p>
+                    {% for message in messages %}
+                    <div class="alert alert-info" role="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                    {% endfor %}
                     <form class="forms-sample" method="POST">{% csrf_token %}
                       <div class="form-group row">
                         <label for="exampleInputUsername1" class="col-sm-3 col-form-label"><b>Date</b></label>
@@ -44,6 +63,18 @@
                         <label for="exampleInputplace" class="col-sm-3 col-form-label"><b>Name</b></label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="exampleInputplace" name="name" placeholder="name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="exampleInputparti" class="col-sm-3 col-form-label">Particular</label>
+                        <div class="col-sm-9">
+                           <input type="text" class="form-control" id="exampleInputparti" name="particular" placeholder="particular">
+                        </div>
+                      </div>
+                       <div class="form-group row">
+                        <label for="exampleInputqty" class="col-sm-3 col-form-label">Quantity_Sold</label>
+                        <div class="col-sm-9">
+                           <input type="text" class="form-control" id="exampleInputqty" name="quantity_sold" placeholder="quantity_sold">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -71,27 +102,30 @@
                         </div>
                       </div>
                         <div class="form-group row">
-                          <label for="exampleInputtax" class="col-sm-3 col-form-label"><b>Sub_Total</b></label>
+                          <label for="subInput" class="col-sm-3 col-form-label"><b>Sub_Total</b></label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="exampleInputtax" name="sub_total" placeholder="sub_total">
+                          <input type="text" class="form-control" id="subInput" name="sub_total" placeholder="sub_total">
                         </div>
                       </div>
                         <div class="form-group row">
-                          <label for="exampleInputsgst" class="col-sm-3 col-form-label"><b>SGST</b></label>
+                          <label for="sgstInput" class="col-sm-3 col-form-label"><b>SGST</b></label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="exampleInputsgst" name="sgst" placeholder="sgst">
+                          <input type="text" class="form-control" id="sgstInput" name="sgst" placeholder="sgst">
                         </div>
                       </div>
                          <div class="form-group row">
-                           <label for="exampleInputcgst" class="col-sm-3 col-form-label"><b>CGST</b></label>
+                           <label for="cgstInput" class="col-sm-3 col-form-label"><b>CGST</b></label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="exampleInputcgst" name="cgst" placeholder="cgst">
+                          <input type="text" class="form-control" id="cgstInput" name="cgst" placeholder="cgst">
                         </div>
                       </div>
                         <div class="form-group row">
-                            <label for="exampleInputcost" class="col-sm-3 col-form-label"><b>Grand_Total</b></label>
+                            <label for="totalInput" class="col-sm-3 col-form-label"><b>Grand_Total</b></label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="exampleInputcost" name="grand_total" placeholder="grand_total">
+                          <input type="text" class="form-control" id="totalInput" name="grand_total" placeholder="grand_total">
+                          <div class="input-group-append">
+                            <button type="button" class="btn btn-primary" onclick="calculateTotal()">Calculate Total</button>
+                          </div>
                         </div>
                       </div>
                         <div class="form-group row">

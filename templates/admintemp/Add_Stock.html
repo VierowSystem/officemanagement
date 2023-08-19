@@ -25,31 +25,42 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
   </head>
-  <body>
+  <body style="background-image: url('{% static 'admin/images/img.png' %}');">
   <a href="{% url 'admindash' %}" >Back</a>
     <div class="container-scroller">
               <div class="col-md-6 grid-margin stretch-card">
-                <div class="card">
+                <div class="card" style="background-image: url('{% static 'admin/images/table1.jpg' %}');">
                   <div class="card-body">
-                    <h4 class="card-title" align="center"><u>ADD STOCK</u></h4>
+                    <h4 class="card-title" align="center"><b><i><u>ADD STOCK</u></i></b></h4>
                     <p class="card-description"> Horizontal form layout </p>
+                    {% for message in messages %}
+                    <div class="alert alert-info" role="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                    {% endfor %}
                     <form class="forms-sample" method="POST">{% csrf_token %}
                       <div class="form-group row">
-                        <label for="exampleInputUsername1" class="col-sm-3 col-form-label">Stock_Name</label>
+                        <label for="exampleInputdate" class="col-sm-3 col-form-label">Date</label>
                         <div class="col-sm-9">
-                         <input type="text" class="form-control" id="exampleInputUsername1" name="stock_name" placeholder="stock_name">
+                         <input type="date" class="form-control" id="exampleInputdate" name="date" placeholder="date">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="exampleInputplace" class="col-sm-3 col-form-label">Place</label>
+                        <label for="exampleInputname" class="col-sm-3 col-form-label">Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="exampleInputplace" name="place" placeholder="place">
+                            <input type="text" class="form-control" id="exampleInputname" name="name" placeholder="name">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="exampleInputstockno" class="col-sm-3 col-form-label">Stock_No</label>
+                        <label for="exampleInputinvoice" class="col-sm-3 col-form-label">Invoice_No</label>
                         <div class="col-sm-9">
-                           <input type="text" class="form-control" id="exampleInputstockno" name="stock_no" placeholder="stock_no">
+                           <input type="text" class="form-control" id="exampleInputinvoice" name="invoice_no" placeholder="invoice_no">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                        <label for="exampleInputparti" class="col-sm-3 col-form-label">Particular</label>
+                        <div class="col-sm-9">
+                           <input type="text" class="form-control" id="exampleInputparti" name="particular" placeholder="particular">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -58,17 +69,43 @@
                           <input type="text" class="form-control" id="exampleInputmodel" name="model" placeholder="model">
                         </div>
                       </div>
-                      <div class="form-group row">
-<!--                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Re Password</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                          <input type="password" class="form-control" id="exampleInputConfirmPassword2" placeholder="Password">-->
-<!--                        </div>-->
+                        <div class="form-group row">
+                        <label for="exampleInputunit" class="col-sm-3 col-form-label">Unit_Price</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputunit" name="unit_price" placeholder="unit_price">
+                        </div>
                       </div>
-                      <div class="form-check form-check-flat form-check-primary">
-                        <label class="form-check-label">
-<!--                          <input type="checkbox" class="form-check-input"> Remember me </label>-->
-                        </label>
+                        <div class="form-group row">
+                        <label for="exampleInputquality" class="col-sm-3 col-form-label">Quality</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputquality" name="qty" placeholder="qty">
+                        </div>
                       </div>
+                        <div class="form-group row">
+                        <label for="exampleInputunits" class="col-sm-3 col-form-label">Units</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputunits" name="units" placeholder="units">
+                        </div>
+                      </div>
+                        <div class="form-group row">
+                        <label for="exampleInputsite" class="col-sm-3 col-form-label">Site</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputsite" name="site" placeholder="site">
+                        </div>
+                      </div>
+                       <div class="form-group row">
+                        <label for="exampleInputusage" class="col-sm-3 col-form-label">Usage_Quality</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputusage" name="usage_qty" placeholder="usage_qty">
+                        </div>
+                      </div>
+                          <div class="form-group row">
+                        <label for="exampleInputbalance" class="col-sm-3 col-form-label">Balance</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="exampleInputbalance" name="balance" placeholder="balance">
+                        </div>
+                      </div>
+
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
                       <button class="btn btn-light">Cancel</button>
                     </form>

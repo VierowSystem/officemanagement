@@ -22,8 +22,13 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
   </head>
-  <body>
+  <body >
     <div class="container-scroller">
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">
+            <strong>{{message}}</strong>
+        </div>
+         {% endfor %}
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -31,18 +36,20 @@
           <a class="navbar-brand brand-logo-mini" href=""><img src="{% static 'admin/images/logo-mini.svg' %}" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="mdi mdi-menu"></span>
-          </button>
+<!--          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">-->
+<!--            <span class="mdi mdi-menu"></span>-->
+<!--          </button>-->
           <div class="search-field d-none d-xl-block">
-            <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                </div>
-                <input type="text" class="form-control bg-transparent border-0"  placeholder="Search products">
-              </div>
-            </form>
+<!--            <form class="d-flex align-items-center h-100" action="#">-->
+<!--              <div class="input-group">-->
+<!--                <div class="input-group-prepend bg-transparent">-->
+<!--                  <i class="input-group-text border-0 mdi mdi-magnify"></i>-->
+<!--                </div>-->
+<!--                <input type="text" class="form-control bg-transparent border-0"  placeholder="Search products">-->
+<!--              </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </form>-->
           </div>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
@@ -56,10 +63,24 @@
           <ul class="nav">
 <!--            <li class="nav-item nav-category">Main</li>-->
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="{% url 'admindash' %}">
                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                 <span class="menu-title">Dashboard</span>
               </a>
+            </li>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic0" aria-expanded="false" aria-controls="ui-basic">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">MANAGER</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="ui-basic0">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'reg_manager' %}">Register Manager</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{% url 'managerview' %}">View Manager</a></li>
+                </ul>
+              </div>
             </li>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item">
@@ -79,7 +100,7 @@
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
                 <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-                <span class="menu-title">ACCOUNTS</span>
+                <span class="menu-title">PURCHASE</span>
                 <i class="menu-arrow"></i>
               </a>
               <div class="collapse" id="ui-basic1">
@@ -130,16 +151,19 @@
                 </ul>
               </div>
             </li>
-<!--                <i class="menu-arrow"></i>-->
-<!--              </a>-->
-<!--               <div class="collapse" id="auth">-->
-<!--                <ul class="nav flex-column sub-menu">-->
-<!--                  <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>-->
-<!--                  <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>-->
-<!--                </ul>-->
-<!--               </div>-->
-<!--             </li>-->
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">ITEMS</span>
+                <i class="menu-arrow"></i>
               </a>
+              <div class="collapse" id="ui-basic6">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{% url 'adminitemview' %}">View Items</a></li>
+                </ul>
+              </div>
+            </li>
              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
@@ -151,66 +175,73 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
-          <div class="content-wrapper">
+          <div class="content-wrapper" style="background-image: url('{% static 'admin/images/PIC1.jpg' %}');">
             <div class="row" id="proBanner">
               <div class="col-12">
               </div>
             </div>
-            <div class="d-xl-flex justify-content-between align-items-start">
-              <h2 class="text-dark font-weight-bold mb-2">ADMIN DASHBOARD </h2>
-              <div class="d-sm-flex justify-content-xl-between align-items-center mb-2">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
-                  <div class="d-md-block d-none">
-                  </div>
-                </div>
-                <div class="tab-content tab-transparent-content">
-                  <div class="tab-pane fade show active" id="business-1" role="tabpanel" aria-labelledby="business-tab">
-                    <div class="row">
-                      <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
-                      </div>
-                        </div>
-                      </div>
-                        </div>
-                      </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-12 grid-margin">
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-sm-12">
-                                <div class="d-flex justify-content-between align-items-center mb-4">
-<!--                                  <h4 class="card-title mb-0">Recent Activity</h4>-->
-                                  <div class="dropdown dropdown-arrow-none">
-                                    </div>
+              <div class="card"  style="background-image: url('{% static 'admin/images/PIC1.jpg' %}');">
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <div class="d-xl-flex justify-content-between align-items-start">
+                                  <h2 class="text-dark font-weight-bold mb-2">ADMIN DASHBOARD </h2>
+                                  <div class="d-sm-flex justify-content-xl-between align-items-center mb-2">
                                   </div>
-                                </div>
                               </div>
-                              <div class="col-lg-3 col-sm-4 grid-margin  grid-margin-lg-0">
-                                <div class="wrapper pb-5 border-bottom">
+<!--                              <form method="get">-->
+<!--                                  {{ stockFilter.form.as_p }}-->
+<!--                                  <button class="btn btn-primary mr-2" type="submit">Search</button>-->
+<!--                              </form>-->
+                              <div class="row">
+                                  <div class="col-md-12">
 
-                                  <canvas id="total-profit"></canvas>
-                                </div>
-<!--                                <div class="wrapper pt-5">-->
-<!--                                  <div class="text-wrapper d-flex align-items-center justify-content-between mb-2">-->
-
-                                  <canvas id="total-expences"></canvas>
-                                </div>
-                              </div>
-                              <div class="col-lg-9 col-sm-8 grid-margin  grid-margin-lg-0">
-                                <div class="pl-0 pl-lg-4 ">
-                                  <div class="d-xl-flex justify-content-between align-items-center mb-2">
-                                    <div class="d-lg-flex align-items-center mb-lg-2 mb-xl-0">
-
-                                    </div>
-                                    <div class="d-lg-flex">
-                                    </div>
+                                      <div class="d-sm-flex justify-content-between align-items-center transaparent-tab-border {">
+                                          <div class="d-md-block d-none">
+                                          </div>
+                                      </div>
+                                      <div class="tab-content tab-transparent-content">
+                                          <div class="tab-pane fade show active" id="business-1" role="tabpanel" aria-labelledby="business-tab">
+                                              <div class="row">
+                                                  <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
                                   </div>
+                              </div>
+                          </div>
+<!--                    <div class="row">-->
+<!--                      <div class="col-12 grid-margin">-->
+<!--                        <div class="card"  style="background-image: url('{% static 'admin/images/table1.jpg' %}');">-->
+<!--                          <div class="card-body">-->
+<!--                            <div class="row">-->
+<!--                              <div class="col-sm-12">-->
+<!--                                <div class="d-flex justify-content-between align-items-center mb-4">-->
+<!--&lt;!&ndash;                                  <h4 class="card-title mb-0">Recent Activity</h4>&ndash;&gt;-->
+<!--                                  <div class="dropdown dropdown-arrow-none">-->
+<!--                                    </div>-->
+<!--                                  </div>-->
+<!--                                </div>-->
+<!--                              </div>-->
+<!--                              <div class="col-lg-3 col-sm-4 grid-margin  grid-margin-lg-0">-->
+<!--                                <div class="wrapper pb-5 border-bottom">-->
+
+<!--                                  <canvas id="total-profit"></canvas>-->
+<!--                                </div>-->
+
+<!--                                  <canvas id="total-expences"></canvas>-->
+<!--                                </div>-->
+<!--                              </div>-->
+<!--                              <div class="col-lg-9 col-sm-8 grid-margin  grid-margin-lg-0">-->
+<!--                                <div class="pl-0 pl-lg-4 ">-->
+<!--                                  <div class="d-xl-flex justify-content-between align-items-center mb-2">-->
+<!--                                    <div class="d-lg-flex align-items-center mb-lg-2 mb-xl-0">-->
+
+<!--                                    </div>-->
+<!--                                    <div class="d-lg-flex">-->
+<!--                                    </div>-->
+<!--                                  </div>-->
                                   <div class="graph-custom-legend clearfix" id="device-sales-legend"></div>
                                   <canvas id="device-sales"></canvas>
                                 </div>
@@ -219,66 +250,20 @@
                           </div>
                         </div>
                       </div>
-<!--                    </div>-->
-<!--                    <div class="row">-->
-<!--                      <div class="col-sm-4 grid-margin stretch-card">-->
-<!--                        <div class="card card">-->
-
-<!--                          </div>-->
-<!--                          <div class="card-body bg-white pt-4">-->
-<!--                            <div class="row pt-4">-->
-<!--                              <div class="col-sm-6">-->
-<!--                                <div class="text-center border-right border-md-0">-->
-
-<!--                                  <h4>Conversion</h4>-->
-<!--                                  <h1 class="text-dark font-weight-bold mb-md-3">$306</h1>-->
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="text-center">
-<!--                                  <h4>Cancellation</h4>-->
-<!--                                  <h1 class="text-dark font-weight-bold">$1,520</h1>-->
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-8  grid-margin stretch-card">
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="d-xl-flex justify-content-between mb-2">
-<!--                              <h4 class="card-title">Page views analytics</h4>-->
-                              <div class="graph-custom-legend primary-dot" id="pageViewAnalyticLengend"></div>
-                            </div>
-                            <canvas id="page-view-analytic"></canvas>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
+      </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="text-center">
+        </div>
+    </div>
           <footer class="footer">
             <div class="footer-inner-wraper">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © vierowsystem.com 2020</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank"></a>vierowsystem.com</span>
               </div>
             </div>
           </footer>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
     <script src="{% static 'admin/vendors/js/vendor.bundle.base.js' %}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->

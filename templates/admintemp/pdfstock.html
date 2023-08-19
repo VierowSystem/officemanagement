@@ -2,7 +2,7 @@
 {% load static %}
 <html lang="en">
   <head>
-      <style>
+            <style>
         table {
             width: 100%;
             border-collapse: collapse;
@@ -37,46 +37,58 @@
   </head>
   <body>
   <a href="{% url 'admindash' %}" >Back</a>
-  <div class="container-scroller">
+    <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
-      <div class="col-lg-12 stretch-card">
-          <div class="card">
-              <div class="card-body">
-                  <h1 align="center"><u><i>STOCKS DETAILS</i></u></h1>
-                  <h4 class="card-title">Table with contextual classes</h4>
-                  <table class="table table-bordered">
-                      <thead>
-                      <tr>
-                          <th> SI_NO </th>
-                          <th> stock_name </th>
-                          <th> place </th>
-                          <th> stock_no </th>
-                          <th> model </th>
-                       </tr>
-                      </thead>
+              <div class="col-lg-12 stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                       <h1 align="center"><u><i>STOCKS DETAILS</i></u></h1>
+                    <h4 class="card-title">Table with contextual classes</h4>
+                      {% for message in messages %}
+                      <div class="alert alert-info" role="alert">
+                          <strong>{{message}}</strong>
+                      </div>
+                      {% endfor %}
+<!--                    <p class="card-description"> Add class <code>.table-{color}</code>-->
+<!--                    </p>-->
+                    <table class="table table-bordered" bgcolor="lightgrey">
+                        <thead>
+                        <tr>
+                            <th> SI NO </th>
+                            <th> Date </th>
+                            <th> Name </th>
+                            <th> Invoice No </th>
+                            <th> Particular </th>
+                            <th> Model </th>
+                            <th> Unit Price </th>
+                            <th> Quality </th>
+                            <th> Units </th>
+                            <th> Site </th>
+                            <th> Usage Quality </th>
+                            <th> Balance  </th>
+                        </tr>
+                        </thead>
                         <tbody>
                         {% for i in stock %}
                         <tr class="table-info">
                             <td>{{ forloop.counter }}</td>
-                            <td>{{i.stock_name}}</td>
-                            <td>{{i.place}}</td>
-                            <td>{{i.stock_no}}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.invoice_no}}</td>
+                            <td>{{i.particular}}</td>
                             <td>{{i.model}}</td>
-<!--                            <td><a href="{% url 'update_stock' i.id %}">-->
-<!--                                <button type="submit" class="btn btn-primary">UPDATE</button></a>-->
-<!--                            </td>-->
-<!--                            <td>-->
-<!--                                <form action="{% url 'stock_delete' i.id %}" method='POST'-->
-<!--                                      style="display:inline;" onsubmit=" ">-->
-<!--                                    {% csrf_token %}-->
-<!--                                    <input type="hidden" name="group" value="{{ i.id }}">-->
-<!--                                    <button type="submit" class="btn btn-dark" >DELETE</button>-->
-<!--                                </form>-->
-<!--                        </tr>-->
-                          {% endfor %}
-                      </tbody>
-                  </table>
-              </div>
+                            <td>{{i.unit_price}}</td>
+                            <td>{{i.qty}}</td>
+                            <td>{{i.units}}</td>
+                            <td>{{i.site}}</td>
+                            <td>{{i.usage_qty}}</td>
+                            <td>{{i.balance}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+        </div>
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->

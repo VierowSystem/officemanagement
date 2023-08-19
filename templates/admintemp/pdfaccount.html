@@ -44,6 +44,11 @@
                   <div class="card-body">
                       <h1 align="center"><u><i>PURCHASE DETAILS</i></u></h1>
                     <h4 class="card-title">Table with contextual classes</h4>
+                      {% for message in messages %}
+                      <div class="alert alert-info" role="alert">
+                          <strong>{{message}}</strong>
+                      </div>
+                      {% endfor %}
 <!--                    <p class="card-description"> Add class <code>.table-{color}</code>-->
 <!--                    </p>-->
                     <table class="table">
@@ -52,6 +57,8 @@
                           <th  scope="col">NO</th>
                           <th  scope="col">Date Of Purchase</th>
                           <th scope="col" > Vendor </th>
+                          <th scope="col" > Particular </th>
+                          <th scope="col" > Model </th>
                           <th scope="col"> Invoice No </th>
                           <th scope="col"> GST No </th>
                           <th scope="col"> Sale Amt </th>
@@ -76,6 +83,8 @@
                             <td>{{ forloop.counter }}</td>
                             <td>{{i.dateof_purchase}}</td>
                             <td>{{i.vendor}}</td>
+                            <td>{{i.particular}}</td>
+                            <td>{{i.model}}</td>
                             <td>{{i.invoice_num}}</td>
                             <td>{{i.gst_num}}</td>
                             <td>{{i.sale_amt}}</td>

@@ -20,37 +20,58 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
   </head>
-  <body>
-  <a href="{% url 'admindash' %}" >Back</a>
+  <body style="background-image: url('{% static 'admin/images/table1.jpg' %}');">
+  <a href="{% url 'admindash' %}">Back</a>
     <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
               <div class="col-lg-12 stretch-card">
-                <div class="card">
+                <div class="card" style="background-image: url('{% static 'admin/images/table1.jpg' %}');">
                   <div class="card-body">
                        <h1 align="center"><u><i>STOCKS DETAILS</i></u></h1>
                     <h4 class="card-title">Table with contextual classes</h4>
+                      <form method="get">
+                          {{ stockFilter.form.as_p }}
+                          <div align="left"><button class="btn btn-primary mr-2" type="submit">Search</button></div>
+                      </form>
+                      {% for message in messages %}
+                      <div class="alert alert-info" role="alert">
+                          <strong>{{message}}</strong>
+                      </div>
+                      {% endfor %}
 <!--                    <p class="card-description"> Add class <code>.table-{color}</code>-->
 <!--                    </p>-->
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" bgcolor="grey">
                         <thead>
                         <tr>
-                            <th> SI_NO </th>
-                            <th> stock_name </th>
-                            <th> place </th>
-                            <th> stock_no </th>
-                            <th> model </th>
-                            <th> UPDATE </th>
-                            <th> DELETE </th>
+                            <th> SI NO </th>
+                            <th> Date </th>
+                            <th> Name </th>
+                            <th> Invoice No </th>
+                            <th> Particular </th>
+                            <th> Model </th>
+                            <th> Unit Price </th>
+                            <th> Quantity </th>
+                            <th> Units </th>
+                            <th> Site </th>
+                            <th> Usage Quality </th>
+                            <th> Balance  </th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for i in stock %}
                         <tr class="table-info">
                             <td>{{ forloop.counter }}</td>
-                            <td>{{i.stock_name}}</td>
-                            <td>{{i.place}}</td>
-                            <td>{{i.stock_no}}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.invoice_no}}</td>
+                            <td>{{i.particular}}</td>
                             <td>{{i.model}}</td>
+                            <td>{{i.unit_price}}</td>
+                            <td>{{i.qty}}</td>
+                            <td>{{i.units}}</td>
+                            <td>{{i.site}}</td>
+                            <td>{{i.usage_qty}}</td>
+                            <td>{{i.balance}}</td>
                             <td><a href="{% url 'update_stock' i.id %}">
                                 <button type="submit" class="btn btn-primary">UPDATE</button></a>
                             </td>
@@ -85,5 +106,6 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
+    </div>
   </body>
 </html>

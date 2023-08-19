@@ -44,6 +44,11 @@
                   <div class="card-body">
                       <h1 align="center"><u><i>SALES DETAILS PDF</i></u></h1>
                     <h4 class="card-title">Table with contextual classes</h4>
+                      {% for message in messages %}
+                      <div class="alert alert-info" role="alert">
+                          <strong>{{message}}</strong>
+                      </div>
+                      {% endfor %}
 <!--                    <p class="card-description"> Add class <code>.table-{color}</code>-->
 <!--                    </p>-->
                     <table class="table table-bordered">

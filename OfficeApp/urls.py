@@ -1,16 +1,18 @@
 from django.urls import path
 
-from OfficeApp import views, userview
+from OfficeApp import views, userview, manager
 
 urlpatterns = [
 
-    path('',views.main_home,name='homepage'),
-    path('admindash/',views.admin_home,name='admindash'),
-    path('login/',views.login_view,name='login'),
+    path('', views.main_home, name='homepage'),
+    path('admindash/', views.admin_home, name='admindash'),
+    path('login/', views.login_view, name='login'),
+    path('register_manager/', views.register_manager, name='reg_manager'),
+    path('manager_view/', views.manager_view, name='managerview'),
 
     # *********************** STOCK ************************************************
 
-    path('Add_Stock/', views.stock_add, name='Add_Stock'),
+    path('Add_Stock/', views.Stock_add, name='Add_Stock'),
     path('View_Stock/', views.stock_view, name='View_Stock'),
     path('update_stock/<int:id>/', views.update_stock, name='update_stock'),
     path('stock_delete/<int:id>/', views.stock_delete, name='stock_delete'),
@@ -31,6 +33,7 @@ urlpatterns = [
     path('update_sales/<int:id>/', views.update_sales, name='update_sales'),
     path('sales_delete/<int:id>/', views.sales_delete, name='sales_delete'),
     path('create-pdf', views.pdf_sale, name='create-pdf'),
+    path('adminitem_view/', views.adminitem_view, name='adminitemview'),
 
     # ****************************  EXPENSE ***********************************
 
@@ -46,6 +49,8 @@ urlpatterns = [
     path('view_emp/', views.employee, name='view_emp'),
     path('user_delete/<int:id>/', views.emp_delete, name='user_delete'),
     path('emphome/', userview.user_home, name='emphome'),
+    path('item_add/', userview.item_add, name='itemadd'),
+    path('empitem_view/', userview.empitem_view, name='empitem_view'),
 
     # **************************** EMP_EXPENSE ***********************************
 
@@ -53,6 +58,19 @@ urlpatterns = [
     path('empexpense_view/', userview.empexpense_view, name='empView_Expense'),
     path('empexpense_delete/<int:id>/', userview.empexpense_delete, name='empexpense_delete'),
     path('profile_view/', userview.profile_view, name='emp_pro'),
+    path('profile_update/<int:user_id>/', userview.profile_update, name='profile_update'),
+
+    # **************************** MANAGER ***********************************
+    path('manager_home/', manager.manager_home, name='managerhome'),
+    path('mstock_view/', manager.mstock_view, name='mview_stock'),
+    path('maccount_view/', manager.maccount_view, name='mview_accounts'),
+    path('mexpense_view/', manager.mexpense_view, name='mview_exp'),
+    path('msale_view/', manager.msale_view, name='mview_sale'),
+    path('memployee/', manager.memployee, name='mview_emp'),
+    path('item_view/', manager.item_view, name='item_view'),
+    path('approve_item/<int:item_id>/', manager.approve_item, name='approve_item'),
+    path('reject_item/<int:item_id>/', manager.reject_item, name='reject_item'),
+
 
 
 

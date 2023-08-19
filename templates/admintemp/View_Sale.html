@@ -20,15 +20,24 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
   </head>
-  <body>
+  <body style="background-image: url('{% static 'admin/images/table1.jpg' %}');">
   <a href="{% url 'admindash' %}" >Back</a>
     <div class="container-scroller">
         <div style="overflow-x:auto;">
               <div class="col-lg-12 stretch-card">
-                <div class="card">
+                <div class="card"  style="background-image: url('{% static 'admin/images/table1.jpg' %}');">
                   <div class="card-body">
                       <h1 align="center"><u><i>SALES DETAILS</i></u></h1>
                     <h4 class="card-title">Table with contextual classes</h4>
+                      <form method="get">
+                          {{ saleFilter.form.as_p }}
+                          <div align="left"><button class="btn btn-primary mr-2" type="submit">Search</button></div>
+                      </form>
+                      {% for message in messages %}
+                      <div class="alert alert-info" role="alert">
+                          <strong>{{message}}</strong>
+                      </div>
+                      {% endfor %}
 
 <!--                    <p class="card-description"> Add class <code>.table-{color}</code>-->
 <!--                    </p>-->
@@ -38,19 +47,23 @@
                           <th> SI_NO </th>
                           <th> Date </th>
                           <th> Name </th>
-                          <th> Invoice_Number </th>
-                          <th> GST_Number </th>
+                          <th> Particular </th>
+                          <th> Quantity </th>
+                          <th> Invoice Number </th>
+                          <th> GST Number </th>
                           <th> Total </th>
-                          <th> Discount_Allowed </th>
-                          <th> Sub_Total </th>
+                          <th> Discount Allowed </th>
+                          <th> Sub Total </th>
                           <th> SGST </th>
                           <th> CGST </th>
-                          <th> Grand_Total </th>
-                          <th> Pay_Date </th>
-                          <th> Amount_Recieved </th>
+                          <th> Grand Total </th>
+                          <th> Pay Date </th>
+                          <th> Amount Recieved </th>
                           <th> Outstanding </th>
-                          <th> Mode_Of_Payment </th>
-                          <th> Payment_Status </th>
+                          <th> Mode Of Payment </th>
+                          <th> Payment Status </th>
+                          <th> Update </th>
+                          <th> Delete </th>
                       </tr>
                       </thead>
                         <tbody>
@@ -59,6 +72,8 @@
                             <td>{{ forloop.counter }}</td>
                             <td>{{i.date}}</td>
                             <td>{{i.name}}</td>
+                            <td>{{i.particular}}</td>
+                            <td>{{i.quantity_sold}}</td>
                             <td>{{i.invoice_no}}</td>
                             <td>{{i.gst_no}}</td>
                             <td>{{i.total}}</td>
@@ -110,6 +125,7 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->
+    </div>
     </div>
   </body>
 </html>

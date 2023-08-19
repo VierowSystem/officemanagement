@@ -33,6 +33,11 @@
                   <div class="card-body">
                     <h4 class="card-title" align="center"><u>ADD EXPENSE</u></h4>
                     <p class="card-description"> Horizontal form layout </p>
+                      {% for message in messages %}
+                      <div class="alert alert-info" role="alert">
+                          <strong>{{message}}</strong>
+                      </div>
+                      {% endfor %}
                    <form class="forms-sample" method="POST">{% csrf_token %}
                        <div class="form-group row">
                             <label for="exampleInputemp_name" class="col-sm-3 col-form-label">Employee_Name</label>

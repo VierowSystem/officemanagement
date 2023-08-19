@@ -11,7 +11,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>VMS</title>
+    <title>Vierow</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -28,45 +28,29 @@
 </head>
 
 <body>
+ <a href="{% url 'emphome' %}" >Back</a>
     <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
         <div class="wrapper wrapper--w780">
             <div class="card card-3">
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">PROFILE</h2>
+                    {% for message in messages %}
+                    <div class="alert alert-info" role="alert">
+                        <strong>{{message}}</strong>
+                    </div>
+                    {% endfor %}
                     {% for user in profile %}
 
                     <form method="POST">{% csrf_token %}
                         <div class="input-group">Name : {{user.name}}
-<!--                            <input class="input&#45;&#45;style-3" type="" placeholder="" name="name">-->
                         </div>
                         <div class="input-group">Contact_No : {{user.contact_no}}
-<!--                            <input class="input&#45;&#45;style-3 js-datepicker" type="text" placeholder="Contact_No" name="contact_no">-->
                             <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                         </div>
                         <div class="input-group">
-<!--                            <div class="rs-select2 js-select-simple select&#45;&#45;no-search">Address : {{user.address}}-->
-<!--                                <input class="input&#45;&#45;style-3 js-datepicker" type="text" placeholder="Address" name="address">-->
-<!--                                <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>-->
-<!--                                <select name="gender">-->
-<!--                                    <option disabled="disabled" selected="selected">Gender</option>-->
-<!--                                    <option>Male</option>-->
-<!--                                    <option>Female</option>-->
-<!--                                    <option>Other</option>-->
-<!--                                </select>-->
-<!--                                <div class="select-dropdown"></div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="input-group">Child_Name : {{user.child_name}}-->
-<!--&lt;!&ndash;                            <input class="input&#45;&#45;style-3" type="email" placeholder="Child_Name" name="child_name">&ndash;&gt;-->
-<!--                        </div>-->
-<!--                        <div class="input-group"> Child_Gender : {{user.child_gender}}-->
-<!--&lt;!&ndash;                            <input class="input&#45;&#45;style-3" type="text" placeholder="Child_Gender" name="child_gender">&ndash;&gt;-->
-<!--                        </div>-->
-<!--                        <div class="input-group">Child_Age  :  {{user.child_age}}-->
-<!--                            <input class="input&#45;&#45;style-3" type="text" placeholder="Child_Age" name="child_age">-->
                         </div>
-                        <a href="">UPDATE</a>
+                        <a href="{% url 'profile_update' user.user_id %}">UPDATE</a>
 
 
                     </form>
@@ -92,3 +76,4 @@
 
 </html>
 <!-- end document-->
+

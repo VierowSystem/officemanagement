@@ -41,14 +41,20 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{% static 'admin/images/favicon.png' %}" />
   </head>
-  <body>
+  <body style="background-image: url('{% static 'admin/images/img.png' %}');">
     <a href="{% url 'admindash' %}" >Back</a>
     <div class="container-scroller">
       <div class="col-md-6 grid-margin stretch-card">
-        <div class="card">
+        <div class="card" style="background-image: url('{% static 'admin/images/table1.jpg' %}');">
           <div class="card-body">
-            <h4 class="card-title" align="center"><u>ADD EXPENSE</u></h4>
+            <h4 class="card-title" align="center"><u><i><b>ADD EXPENSE</b></i></u></h4>
             <p class="card-description"> Horizontal form layout </p>
+                </div>
+                  {% for message in messages %}
+          <div class="alert alert-info" role="alert">
+            <strong>{{message}}</strong>
+          </div>
+          {% endfor %}
             <form class="forms-sample" method="POST">{% csrf_token %}
               <div class="form-group row">
                 <label for="exampleInputUsername1" class="col-sm-3 col-form-label">Date</label>
